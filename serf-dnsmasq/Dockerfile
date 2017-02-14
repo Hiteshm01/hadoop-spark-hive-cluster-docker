@@ -1,9 +1,10 @@
 # Creates a base ubuntu image with serf and dnsmasq
-FROM centos:6
+FROM openjdk
 
-MAINTAINER JoeWoo <0wujian0@gmail.com>
+MAINTAINER Hitesh <hitesh.m01@gmail.com>
 
-RUN yum install -y unzip curl dnsmasq
+RUN apt-get update && \
+apt-get -y install dnsmasq
 
 # dnsmasq configuration
 ADD dnsmasq/* /etc/

@@ -1,12 +1,14 @@
-FROM joewoo/serf-dnsmasq:1.0
+FROM hitesh/serf-dnsmasq
 
-MAINTAINER JoeWoo <0wujian0@gmail.com>
+MAINTAINER Hitesh <hitesh.m01@gmail.com>
 
 # install openssh-server, vim and openjdk
-RUN yum provides '*/applydeltarpm'
-RUN yum install -y deltarpm
-RUN yum install -y openssh-server vim
-RUN yum install -y mysql mysql-server mysql-devel
+# RUN apt-get provides '*/applydeltarpm'
+RUN apt-get install -y deltarpm
+RUN apt-get install -y openssh-server vim
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server \
+	&& rm -rf ${MYSQL_DATA_DIR} \
+ 	&& rm -rf /var/lib/apt/lists/*
 #RUN groupadd mysql && \
 #useradd -g mysql mysql
 #RUN chgrp -R mysql /var/lib/mysql

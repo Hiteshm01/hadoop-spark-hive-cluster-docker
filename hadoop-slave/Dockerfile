@@ -1,6 +1,6 @@
-FROM joewoo/hadoop-base:1.0
+FROM hitesh/hadoop-base
 
-MAINTAINER JoeWoo <0wujian0@gmail.com>
+MAINTAINER Hitesh <hitesh.m01@gmail.com>
 
 # move all confugration /tmp into container
 ADD files/* /tmp/
@@ -10,10 +10,10 @@ ENV SPARK_INSTALL /usr/local/spark
 
 RUN mkdir $HADOOP_INSTALL/logs
 
-RUN mv /tmp/hdfs-site.xml $HADOOP_INSTALL/etc/hadoop/hdfs-site.xml && \
-mv /tmp/core-site.xml $HADOOP_INSTALL/etc/hadoop/core-site.xml && \
-mv /tmp/mapred-site.xml $HADOOP_INSTALL/etc/hadoop/mapred-site.xml && \
-mv /tmp/yarn-site.xml $HADOOP_INSTALL/etc/hadoop/yarn-site.xml
+RUN mv /tmp/hdfs-site.xml $HADOOP_INSTALL/hdfs-site.xml && \
+mv /tmp/core-site.xml $HADOOP_INSTALL/core-site.xml && \
+mv /tmp/mapred-site.xml $HADOOP_INSTALL/mapred-site.xml && \
+mv /tmp/yarn-site.xml $HADOOP_INSTALL/yarn-site.xml
 
 RUN mv /tmp/spark-slaves $SPARK_INSTALL/conf/slaves
 

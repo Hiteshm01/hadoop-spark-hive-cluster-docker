@@ -1,6 +1,6 @@
-FROM joewoo/hadoop-base:1.0
+FROM hitesh/hadoop-base
 
-MAINTAINER JoeWoo <0wujian0@gmail.com>
+MAINTAINER Hitesh <hitesh.m01@gmail.com>
 
 # move all confugration files into container
 ADD files/* /tmp/
@@ -13,11 +13,11 @@ RUN mkdir -p ~/hdfs/namenode && \
 mkdir -p ~/hdfs/datanode && \
 mkdir $HADOOP_INSTALL/logs
 
-RUN mv /tmp/hdfs-site.xml $HADOOP_INSTALL/etc/hadoop/hdfs-site.xml && \
-mv /tmp/core-site.xml $HADOOP_INSTALL/etc/hadoop/core-site.xml && \
-mv /tmp/mapred-site.xml $HADOOP_INSTALL/etc/hadoop/mapred-site.xml && \
-mv /tmp/yarn-site.xml $HADOOP_INSTALL/etc/hadoop/yarn-site.xml && \
-mv /tmp/slaves $HADOOP_INSTALL/etc/hadoop/slaves && \
+RUN mv /tmp/hdfs-site.xml $HADOOP_INSTALL/hdfs-site.xml && \
+mv /tmp/core-site.xml $HADOOP_INSTALL/core-site.xml && \
+mv /tmp/mapred-site.xml $HADOOP_INSTALL/mapred-site.xml && \
+mv /tmp/yarn-site.xml $HADOOP_INSTALL/yarn-site.xml && \
+mv /tmp/slaves $HADOOP_INSTALL/slaves && \
 mv /tmp/start-hadoop.sh ~/start-hadoop.sh && \
 mv /tmp/run-wordcount.sh ~/run-wordcount.sh && \
 mv /tmp/start-ssh-serf.sh ~/start-ssh-serf.sh && \
