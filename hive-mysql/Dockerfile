@@ -1,4 +1,4 @@
-FROM hitesh/serf-dnsmasq
+FROM hitesh/serf-dnsmasq:2.0
 
 MAINTAINER Hitesh <hitesh.m01@gmail.com>
 

@@ -1,4 +1,4 @@
-FROM hitesh/serf-dnsmasq:1.0
+FROM hitesh/serf-dnsmasq:2.0
 
 MAINTAINER Hitesh <hitesh.m01@gmail.com>
 
@@ -20,8 +20,8 @@ ADD files/hive /usr/local/hive
 ADD files/hive-hwi.war /usr/local/hive-hwi.war
 
 # set jave environment variable
-ENV JAVA_HOME /usr/lib/jvm/jre-1.7.0-openjdk.x86_64
-ENV PATH $PATH:$JAVA_HOME/bin
+# ENV JAVA_HOME /usr/lib/jvm/jre-1.7.0-openjdk.x86_64
+# ENV PATH $PATH:$JAVA_HOME/bin
 RUN java -version
 
 #install scala 2.10.4
@@ -35,6 +35,7 @@ RUN mkdir /var/run/sshd && \
 ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && \
 mv /usr/local/ssh_config ~/.ssh/config && \
+chmod 600 ~/.ssh/authorized_keys && \
 sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
 #install hadoop 

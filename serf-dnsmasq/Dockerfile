@@ -1,5 +1,5 @@
 # Creates a base ubuntu image with serf and dnsmasq
-FROM openjdk
+FROM java:openjdk-7-jre
 
 MAINTAINER Hitesh <hitesh.m01@gmail.com>
 
